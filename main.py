@@ -15,7 +15,9 @@ def generate_qr_code(url):
 
     return qr_code
 
-def save_qr_code(qr_code, filename):
+def save_qr_code(qr_code, filename, export_path=None):
+    if export_path:
+        filename = export_path + "/" + filename
     qr_code.save(filename)
 
 def display_qr_code(qr_code):
@@ -25,7 +27,7 @@ def main():
     website_url = "https://www.example.com"  # Replace with your website URL
 
     generated_qr_code = generate_qr_code(website_url)
-    save_qr_code(generated_qr_code, "qr_code.png")  # Save the QR code to a file
+    save_qr_code(generated_qr_code, "qr_code.png", export_path="export")  # Specify the export path
     display_qr_code(generated_qr_code)  # Display the QR code
 
 if __name__ == "__main__":
